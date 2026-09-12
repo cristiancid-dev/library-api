@@ -6,13 +6,13 @@ public class Book {
 
     // A class representing a book
 
-    private final int isbn;
+    private final String isbn;
     private final String title;
     private final LocalDate publicationDate;
     private Author author;
     private String category;
 
-    public Book(int isbn, String title, LocalDate publicationDate, Author author, String category) {
+    public Book(String isbn, String title, LocalDate publicationDate, Author author, String category) {
         this.isbn = isbn;
         this.title = title;
         this.publicationDate = publicationDate;
@@ -22,7 +22,7 @@ public class Book {
 
     // Getters
 
-    public int getIsbn() {
+    public String getIsbn() {
         return isbn;
     }
 

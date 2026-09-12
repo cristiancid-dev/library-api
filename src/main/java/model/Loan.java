@@ -8,14 +8,14 @@ public class Loan {
 
     private final int id;
     private int memberId;
-    private int bookId;
+    private String bookIsbn;
     private LocalDate issueDate;
     private LocalDate dueDate;
 
-    public Loan(int id, int memberId, int bookId, LocalDate issueDate, LocalDate dueDate) {
+    public Loan(int id, int memberId, String bookIsbn, LocalDate issueDate, LocalDate dueDate) {
         this.id = id;
         this.memberId = memberId;
-        this.bookId = bookId;
+        this.bookIsbn = bookIsbn;
         this.issueDate = issueDate;
         this.dueDate = dueDate;
     }
@@ -31,8 +31,8 @@ public class Loan {
         return memberId;
     }
 
-    public int getBookId() {
-        return bookId;
+    public String getBookIsbn() {
+        return bookIsbn;
     }
 
     public LocalDate getIssueDate() {
@@ -50,8 +50,8 @@ public class Loan {
         this.memberId = memberId;
     }
 
-    public void setBookId(int bookId) {
-        this.bookId = bookId;
+    public void setBookIsbn(String bookIsbn) {
+        this.bookIsbn = bookIsbn;
     }
 
     public void setIssueDate(LocalDate issueDate) {

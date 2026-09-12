@@ -10,15 +10,15 @@ public class Member {
     private String name;
     private String email;
     private LocalDate birthDate;
-    private String adress;
+    private String address;
     private int phoneNumber;
 
-    public Member(int id, String name, String email, LocalDate birthDate, String adress, int phoneNumber) {
+    public Member(int id, String name, String email, LocalDate birthDate, String address, int phoneNumber) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.birthDate = birthDate;
-        this.adress = adress;
+        this.address = address;
         this.phoneNumber = phoneNumber;
     }
 
@@ -40,8 +40,8 @@ public class Member {
         return birthDate;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
     public int getPhoneNumber() {
@@ -98,12 +98,12 @@ public class Member {
         this.birthDate = birthDate;
     }
 
-    public void setAdress(String adress) {
+    public void setAddress(String adress) {
         if (adress == null) {
             throw new IllegalArgumentException("adress cannot be null");
         }
 
-        this.adress = adress;
+        this.address = adress;
     }
 
     public void setPhoneNumber(int phoneNumber) {
