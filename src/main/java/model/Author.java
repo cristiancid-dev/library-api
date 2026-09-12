@@ -58,4 +58,9 @@ public class Author {
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
+
+    @Override
+    public String toString() {
+        return "Id: " + id + " Name: " + name + " Birth date: " + birthDate;
+    }
 }

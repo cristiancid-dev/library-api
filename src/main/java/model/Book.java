@@ -53,5 +53,11 @@ public class Book {
     public void setCategory(String category) {
         this.category = category;
     }
+
+    @Override
+    public String toString() {
+        return "ISBN: " + isbn + " Title: " + title + " Publication date: " + publicationDate +
+                " Author: " + author + " Category: " + category;
+    }
 }
 

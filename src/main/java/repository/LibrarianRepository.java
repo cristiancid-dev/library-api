@@ -1,7 +1,7 @@
 package main.java.repository;
 
 import main.java.model.Librarian;
-import main.java.model.exception.LibrarianAlreadyExistsException;
+import main.java.exception.LibrarianAlreadyExistsException;
 
 import java.util.ArrayList;
 import java.util.List;

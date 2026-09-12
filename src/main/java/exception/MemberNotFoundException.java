@@ -1,4 +1,4 @@
-package main.java.model.exception;
+package main.java.exception;
 
 public class MemberNotFoundException extends RuntimeException {
     public MemberNotFoundException(String message) {

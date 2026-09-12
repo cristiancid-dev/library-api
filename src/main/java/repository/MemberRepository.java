@@ -1,8 +1,8 @@
 package main.java.repository;
 
 import main.java.model.Member;
-import main.java.model.exception.MemberAlreadyExistsException;
-import main.java.model.exception.MemberNotFoundException;
+import main.java.exception.MemberAlreadyExistsException;
+import main.java.exception.MemberNotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;

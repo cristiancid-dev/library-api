@@ -1,4 +1,4 @@
-package main.java.model.exception;
+package main.java.exception;
 
 public class AuthorAlreadyExistsException extends RuntimeException{
     public AuthorAlreadyExistsException(String message) {

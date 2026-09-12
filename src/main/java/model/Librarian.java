@@ -105,4 +105,9 @@ public class Librarian {
         this.email = email;
 
     }
+
+    @Override
+    public String toString() {
+        return "Id: " + id + " Name: " + name + " Email: " + email;
+    }
 }

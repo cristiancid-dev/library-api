@@ -1,8 +1,8 @@
 package main.java.repository;
 
 import main.java.model.Loan;
-import main.java.model.exception.BookAlreadyExistsException;
-import main.java.model.exception.LoanNotFoundException;
+import main.java.exception.BookAlreadyExistsException;
+import main.java.exception.LoanNotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;

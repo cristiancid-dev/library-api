@@ -1,4 +1,4 @@
-package main.java.model.exception;
+package main.java.exception;
 
 public class AuthorNotFoundException extends RuntimeException {
     public AuthorNotFoundException(String message) {

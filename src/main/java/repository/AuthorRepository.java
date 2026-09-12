@@ -1,8 +1,8 @@
 package main.java.repository;
 
 import main.java.model.Author;
-import main.java.model.exception.AuthorAlreadyExistsException;
-import main.java.model.exception.AuthorNotFoundException;
+import main.java.exception.AuthorAlreadyExistsException;
+import main.java.exception.AuthorNotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;

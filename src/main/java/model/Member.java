@@ -98,17 +98,23 @@ public class Member {
         this.birthDate = birthDate;
     }
 
-    public void setAddress(String adress) {
-        if (adress == null) {
-            throw new IllegalArgumentException("adress cannot be null");
+    public void setAddress(String address) {
+        if (address == null) {
+            throw new IllegalArgumentException("address cannot be null");
         }
 
-        this.address = adress;
+        this.address = address;
     }
 
     public void setPhoneNumber(int phoneNumber) {
         if (phoneNumber < 4 || phoneNumber > 15) {
             throw new IllegalArgumentException("phone number length must be between 4 and 15 digits");
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Id: " + id + " Name: " + name + " Email: " + email + " Birth date: " + birthDate +
+                " Address: " + address + " Phone number: " + phoneNumber;
     }
 }

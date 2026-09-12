@@ -61,4 +61,10 @@ public class Loan {
     public void setDueDate(LocalDate dueDate) {
         this.dueDate = dueDate;
     }
+
+    @Override
+    public String toString() {
+        return "Id: " + id + " Member Id: " + memberId + " Book ISBN: " + bookIsbn +
+                " Issue date: " + issueDate + " Due date: " + dueDate;
+    }
 }

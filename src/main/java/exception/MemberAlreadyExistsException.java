@@ -1,4 +1,4 @@
-package main.java.model.exception;
+package main.java.exception;
 
 public class MemberAlreadyExistsException extends RuntimeException {
     public MemberAlreadyExistsException(String message) {

@@ -1,4 +1,4 @@
-package main.java.model.exception;
+package main.java.exception;
 
 public class LoanNotFoundException extends RuntimeException {
     public LoanNotFoundException(String message) {
