@@ -1,8 +1,8 @@
-package main.java.repository;
+package com.cristiancid.library.repository;
 
-import main.java.model.Member;
-import main.java.exception.MemberAlreadyExistsException;
-import main.java.exception.MemberNotFoundException;
+import com.cristiancid.library.model.Member;
+import com.cristiancid.library.exception.MemberAlreadyExistsException;
+import com.cristiancid.library.exception.MemberNotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;

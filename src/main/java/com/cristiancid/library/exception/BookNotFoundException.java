@@ -1,4 +1,4 @@
-package main.java.exception;
+package com.cristiancid.library.exception;
 
 public class BookNotFoundException extends RuntimeException {
     public BookNotFoundException(String message) {

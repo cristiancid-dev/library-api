@@ -1,4 +1,4 @@
-package main.java.exception;
+package com.cristiancid.library.exception;
 
 public class LoanNotFoundException extends RuntimeException {
     public LoanNotFoundException(String message) {

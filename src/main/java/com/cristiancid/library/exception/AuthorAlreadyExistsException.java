@@ -1,4 +1,4 @@
-package main.java.exception;
+package com.cristiancid.library.exception;
 
 public class AuthorAlreadyExistsException extends RuntimeException{
     public AuthorAlreadyExistsException(String message) {

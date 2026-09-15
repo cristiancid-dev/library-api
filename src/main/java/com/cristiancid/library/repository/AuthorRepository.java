@@ -1,8 +1,8 @@
-package main.java.repository;
+package com.cristiancid.library.repository;
 
-import main.java.model.Author;
-import main.java.exception.AuthorAlreadyExistsException;
-import main.java.exception.AuthorNotFoundException;
+import com.cristiancid.library.model.Author;
+import com.cristiancid.library.exception.AuthorAlreadyExistsException;
+import com.cristiancid.library.exception.AuthorNotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package main.java.model;
+package com.cristiancid.library.model;
 
 import java.time.LocalDate;
 

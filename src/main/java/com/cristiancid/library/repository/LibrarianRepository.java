@@ -1,7 +1,7 @@
-package main.java.repository;
+package com.cristiancid.library.repository;
 
-import main.java.model.Librarian;
-import main.java.exception.LibrarianAlreadyExistsException;
+import com.cristiancid.library.model.Librarian;
+import com.cristiancid.library.exception.LibrarianAlreadyExistsException;
 
 import java.util.ArrayList;
 import java.util.List;

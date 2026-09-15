@@ -1,4 +1,4 @@
-package main.java.exception;
+package com.cristiancid.library.exception;
 
 public class MemberAlreadyExistsException extends RuntimeException {
     public MemberAlreadyExistsException(String message) {

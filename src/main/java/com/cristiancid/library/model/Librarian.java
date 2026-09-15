@@ -1,4 +1,4 @@
-package main.java.model;
+package com.cristiancid.library.model;
 
 public class Librarian {
 

@@ -1,8 +1,8 @@
-package main.java.repository;
+package com.cristiancid.library.repository;
 
-import main.java.model.Loan;
-import main.java.exception.BookAlreadyExistsException;
-import main.java.exception.LoanNotFoundException;
+import com.cristiancid.library.model.Loan;
+import com.cristiancid.library.exception.BookAlreadyExistsException;
+import com.cristiancid.library.exception.LoanNotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
