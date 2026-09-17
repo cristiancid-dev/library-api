@@ -28,8 +28,8 @@ public class BookRepository {
             return Optional.empty();
         }
         int index = books.indexOf(findByIsbn(isbn).get());
-        Book updatedBook = books.set(index, book);
-        return Optional.of(updatedBook);
+        books.set(index, book);
+        return Optional.of(book);
     }
 
     public void deleteBook(String isbn) {
