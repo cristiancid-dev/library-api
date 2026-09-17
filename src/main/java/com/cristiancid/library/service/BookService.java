@@ -20,6 +20,7 @@ public class BookService {
         this.authorRepository = authorRepository;
     }
 
+
     public Book createBook(String isbn, String title, LocalDate publicationDate, int authorId, String category) {
         if (bookRepository.findByIsbn(isbn).isPresent()) {
             throw new BookAlreadyExistsException("Book with ISBN '" + isbn + "'already exists");
