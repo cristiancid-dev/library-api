@@ -1,8 +1,6 @@
 package com.cristiancid.library.repository;
 
 import com.cristiancid.library.model.Author;
-import com.cristiancid.library.exception.AuthorAlreadyExistsException;
-import com.cristiancid.library.exception.AuthorNotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,11 +11,6 @@ public class AuthorRepository {
     private final List<Author> authors = new ArrayList<>();
 
     public void saveAuthor(Author author) {
-        for (Author author1 : authors) {
-            if (author1.equals(author)) {
-                throw new AuthorAlreadyExistsException("Author already exists");
-            }
-        }
         authors.add(author);
     }
 
@@ -27,6 +20,19 @@ public class AuthorRepository {
                 return Optional.of(author);
             }
         }
-        throw new AuthorNotFoundException("Author with id '" + id + "' not found");
+        return Optional.empty();
+    }
+
+    public Optional<Author> updateAuthor(int id, Author author) {
+        if (findById(id).isEmpty()) {
+            return Optional.empty();
+        }
+        int index = authors.indexOf(findById(id).get());
+        authors.set(index,author);
+        return Optional.of(author);
+    }
+
+    public void deleteAuthor(int id) {
+        authors.remove(findById(id).get());
     }
 }
