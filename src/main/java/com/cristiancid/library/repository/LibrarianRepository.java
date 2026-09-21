@@ -1,21 +1,47 @@
 package com.cristiancid.library.repository;
 
 import com.cristiancid.library.model.Librarian;
-import com.cristiancid.library.exception.LibrarianAlreadyExistsException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class LibrarianRepository {
 
     private final List<Librarian> librarians = new ArrayList<>();
 
     public void saveLibrarian(Librarian librarian) {
-        for (Librarian librarian1:librarians) {
-            if (librarian1.getEmail().equals(librarian.getEmail())) {
-                throw new LibrarianAlreadyExistsException("Librarian with email '" + librarian.getEmail() + "' already exists");
+        librarians.add(librarian);
+    }
+
+    public Optional<Librarian> findById(int id) {
+        for (Librarian librarian:librarians) {
+            if (librarian.getId() == id) {
+                return Optional.of(librarian);
             }
         }
-        librarians.add(librarian);
+        return Optional.empty();
+    }
+
+    public  Optional<Librarian> findByEmail(String email) {
+        for (Librarian librarian:librarians) {
+            if (librarian.getEmail().equals(email)) {
+                return Optional.of(librarian);
+            }
+        }
+        return Optional.empty();
+    }
+
+    public Optional<Librarian> updateLibrarian(int id, Librarian librarian) {
+        if (findById(id).isEmpty()) {
+            return Optional.empty();
+        }
+        int index = librarians.indexOf(findById(id).get());
+        librarians.set(index,librarian);
+        return Optional.of(librarian);
+    }
+
+    public void deleteLibrarian(int id) {
+        librarians.remove(findById(id).get());
     }
 }
