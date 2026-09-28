@@ -1,8 +1,6 @@
 package com.cristiancid.library.repository;
 
 import com.cristiancid.library.model.Member;
-import com.cristiancid.library.exception.MemberAlreadyExistsException;
-import com.cristiancid.library.exception.MemberNotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,11 +11,6 @@ public class MemberRepository {
     private final List<Member> members = new ArrayList<>();
 
     public void saveMember(Member member) {
-        for (Member member1 : members) {
-            if (member1.equals(member)) {
-                throw new MemberAlreadyExistsException("Member already exists");
-            }
-        }
         members.add(member);
     }
 
@@ -27,7 +20,7 @@ public class MemberRepository {
                 return Optional.of(member);
             }
         }
-        throw new MemberNotFoundException("Member with id '" + id + "' not found");
+        return Optional.empty();
     }
 
     public Optional<Member> findByEmail(String email) {
@@ -36,6 +29,28 @@ public class MemberRepository {
                 return Optional.of(member);
             }
         }
-        throw new MemberNotFoundException("Member with email '" + email + "' not found");
+        return Optional.empty();
+    }
+
+    public Optional<Member> findByPhoneNumber(int phoneNumber) {
+        for (Member member : members) {
+            if (member.getPhoneNumber() == phoneNumber) {
+                return Optional.of(member);
+            }
+        }
+        return Optional.empty();
+    }
+
+    public Optional<Member> updateMember(int id, Member member) {
+        if (findById(id).isEmpty()) {
+            return Optional.empty();
+        }
+        int index = members.indexOf(findById(id).get());
+        members.set(index, member);
+        return Optional.of(member);
+    }
+
+    public void deleteMember(int id) {
+        members.remove(findById(id).get());
     }
 }
