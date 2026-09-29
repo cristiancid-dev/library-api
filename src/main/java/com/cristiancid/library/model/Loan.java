@@ -1,5 +1,7 @@
 package com.cristiancid.library.model;
 
+import com.cristiancid.library.model.enums.Status;
+
 import java.time.LocalDate;
 
 public class Loan {
@@ -11,6 +13,8 @@ public class Loan {
     private String bookIsbn;
     private LocalDate issueDate;
     private LocalDate dueDate;
+    private LocalDate returnDate;
+    private Status status;
 
     public Loan(int id, int memberId, String bookIsbn, LocalDate issueDate, LocalDate dueDate) {
         this.id = id;
@@ -18,6 +22,8 @@ public class Loan {
         this.bookIsbn = bookIsbn;
         this.issueDate = issueDate;
         this.dueDate = dueDate;
+        returnDate = null;
+        status = Status.ACTIVE;
     }
 
     // Getters
@@ -43,6 +49,10 @@ public class Loan {
         return dueDate;
     }
 
+    public Status getStatus() {
+        return status;
+    }
+
     // Setters
 
 
@@ -60,6 +70,23 @@ public class Loan {
 
     public void setDueDate(LocalDate dueDate) {
         this.dueDate = dueDate;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public boolean isActive() {
+        return status == Status.ACTIVE;
+    }
+
+    public boolean isOverDue() {
+        return isActive() && dueDate.isBefore(LocalDate.now());
+    }
+
+    public void returnBook() {
+        this.returnDate = LocalDate.now();
+        this.status = Status.RETURNED;
     }
 
     @Override
