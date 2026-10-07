@@ -1,8 +1,6 @@
 package com.cristiancid.library.repository;
 
 import com.cristiancid.library.model.Loan;
-import com.cristiancid.library.exception.BookAlreadyExistsException;
-import com.cristiancid.library.exception.LoanNotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,11 +11,6 @@ public class LoanRepository {
     private final List<Loan> loans =  new ArrayList<>();
 
     public void saveLoan(Loan loan) {
-        for (Loan loan1 : loans) {
-            if (loan1.getBookIsbn() == loan.getBookIsbn()) {
-                throw new BookAlreadyExistsException("This book is currently loaned");
-            }
-        }
         loans.add(loan);
     }
 
@@ -31,12 +24,22 @@ public class LoanRepository {
         return memberLoans;
     }
 
-    public Optional<Loan> findByBookIsbn (String bookIsbn) {
+    public List<Loan> findLoansByBookIsbn(String bookIsbn) {
+        List<Loan> bookLoans = new ArrayList<>();
         for (Loan loan : loans) {
-            if (loan.getBookIsbn().equals(bookIsbn)) {
+            if (loan.getBookIsbn().equals(bookIsbn)){
+                bookLoans.add(loan);
+            }
+        }
+        return bookLoans;
+    }
+
+    public Optional<Loan> findActiveLoanByBookIsbn(String bookIsbn) {
+        for (Loan loan : loans) {
+            if (loan.getBookIsbn().equals(bookIsbn) && loan.isActive()) {
                 return Optional.of(loan);
             }
         }
-        throw new LoanNotFoundException("Book with ISBN '" + bookIsbn + "' has no active loan");
+        return Optional.empty();
     }
 }
