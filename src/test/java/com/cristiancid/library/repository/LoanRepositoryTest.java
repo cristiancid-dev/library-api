@@ -26,7 +26,7 @@ public class LoanRepositoryTest {
         Book book = new Book("1234567890123", "Harry Potter and the Philosopher's Stone",
                 LocalDate.of(1997, 6, 26), author, "Fantasy");
         Member member = new Member(1, "Cristian", "ccidbe@library.com", LocalDate.of(2000, 1, 6),
-                "Test Avenue nº20, Barcelona", 123456789);
+                "Test Avenue nº20, Barcelona", "123456789");
         Loan loan = new Loan(1, 1, "1234567890123", LocalDate.now(), LocalDate.now().plusDays(30));
 
         loanRepository.saveLoan(loan);
@@ -49,7 +49,7 @@ public class LoanRepositoryTest {
                 LocalDate.of(1998, 7, 2), author, "Fantasy");
 
         Member member = new Member(1, "Cristian", "ccidbe@library.com", LocalDate.of(2000, 1, 6),
-                "Test Avenue nº20, Barcelona", 123456789);
+                "Test Avenue nº20, Barcelona", "123456789");
         Loan loan1 = new Loan(1, 1, "0000000000001", LocalDate.now(), LocalDate.now().plusDays(30));
         Loan loan2 = new Loan(2, 1, "0000000000002", LocalDate.now(), LocalDate.now().plusDays(30));
         loanRepository.saveLoan(loan1);
@@ -66,7 +66,7 @@ public class LoanRepositoryTest {
     void givenMemberWithNoLoans_whenFindByMemberId_thenEmptyListReturned() {
 
         Member member = new Member(1, "Cristian", "ccidbe@library.com", LocalDate.of(2000, 1, 6),
-                "Test Avenue nº20, Barcelona", 123456789);
+                "Test Avenue nº20, Barcelona", "123456789");
 
         List<Loan> expected = new ArrayList<>();
         List<Loan> result = loanRepository.findByMemberId(member.getId());
@@ -83,9 +83,9 @@ public class LoanRepositoryTest {
         Book book = new Book("1234567890123", "Harry Potter and the Philosopher's Stone",
                 LocalDate.of(1997, 6, 26), author, "Fantasy");
         Member member1 = new Member(1, "Cristian", "ccidbe@library.com", LocalDate.of(2000, 1, 6),
-                "Test Avenue nº20, Barcelona", 123456789);
+                "Test Avenue nº20, Barcelona", "123456789");
         Member member2 = new Member(2, "David", "david@library.com", LocalDate.of(2000, 1, 6),
-                "Test Avenue nº20, Barcelona", 987654321);
+                "Test Avenue nº20, Barcelona", "987654321");
         Loan loan1 = new Loan(1, 1, "1234567890123", LocalDate.now(), LocalDate.now().plusDays(30));
         Loan loan2 = new Loan(2, 2, "1234567890123", LocalDate.now(), LocalDate.now().plusDays(30));
         loanRepository.saveLoan(loan1);
@@ -119,7 +119,7 @@ public class LoanRepositoryTest {
         Book book = new Book("1234567890123", "Harry Potter and the Philosopher's Stone",
                 LocalDate.of(1997, 6, 26), author, "Fantasy");
         Member member = new Member(1, "Cristian", "ccidbe@library.com", LocalDate.of(2000, 1, 6),
-                "Test Avenue nº20, Barcelona", 123456789);
+                "Test Avenue nº20, Barcelona", "123456789");
         Loan loan = new Loan(1, 1, "1234567890123", LocalDate.now(), LocalDate.now().plusDays(30));
         loanRepository.saveLoan(loan);
 

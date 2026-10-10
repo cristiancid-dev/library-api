@@ -32,9 +32,9 @@ public class MemberRepository {
         return Optional.empty();
     }
 
-    public Optional<Member> findByPhoneNumber(int phoneNumber) {
+    public Optional<Member> findByPhoneNumber(String phoneNumber) {
         for (Member member : members) {
-            if (member.getPhoneNumber() == phoneNumber) {
+            if (member.getPhoneNumber().equals(phoneNumber)) {
                 return Optional.of(member);
             }
         }
