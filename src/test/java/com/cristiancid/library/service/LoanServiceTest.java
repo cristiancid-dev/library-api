@@ -40,7 +40,7 @@ public class LoanServiceTest {
         Book book = bookService.createBook("1234567890123", "Harry Potter and the Philosopher's Stone",
                 LocalDate.of(1997, 6, 26), 1, "Fantasy");
         Member member = memberService.createMember("Cristian", "ccidbe@library.com", LocalDate.of(2000, 1, 6),
-                "Test Avenue nº20, Barcelona", 123456789);
+                "Test Avenue nº20, Barcelona", "123456789");
 
         Loan expected = new Loan(1, 1, "1234567890123",
                 LocalDate.now(), LocalDate.now().plusDays(30));
@@ -60,7 +60,7 @@ public class LoanServiceTest {
         Book book = bookService.createBook("1234567890123", "Harry Potter and the Philosopher's Stone",
                 LocalDate.of(1997, 6, 26), 1, "Fantasy");
         Member member = memberService.createMember("Cristian", "ccidbe@library.com", LocalDate.of(2000, 1, 6),
-                "Test Avenue nº20, Barcelona", 123456789);
+                "Test Avenue nº20, Barcelona", "123456789");
         loanService.createLoan(member.getId(), book.getIsbn());
 
         assertThrows(BookOnActiveLoanException.class,() -> {
@@ -91,7 +91,7 @@ public class LoanServiceTest {
         Book book6 = bookService.createBook("0000000000006", "Harry Potter and the Half-Blood Prince",
                 LocalDate.of(2005, 7, 16), 1, "Fantasy");
         Member member = memberService.createMember("Cristian", "ccidbe@library.com", LocalDate.of(2000, 1, 6),
-                "Test Avenue nº20, Barcelona", 123456789);
+                "Test Avenue nº20, Barcelona", "123456789");
         loanService.createLoan(member.getId(), book1.getIsbn());
         loanService.createLoan(member.getId(), book2.getIsbn());
         loanService.createLoan(member.getId(), book3.getIsbn());
@@ -112,7 +112,7 @@ public class LoanServiceTest {
         Book book = bookService.createBook("1234567890123", "Harry Potter and the Philosopher's Stone",
                 LocalDate.of(1997, 6, 26), 1, "Fantasy");
         Member member = memberService.createMember("Cristian", "ccidbe@library.com", LocalDate.of(2000, 1, 6),
-                "Test Avenue nº20, Barcelona", 123456789);
+                "Test Avenue nº20, Barcelona", "123456789");
         Loan loan = loanService.createLoan(member.getId(), book.getIsbn());
 
         loanService.returnBook(book.getIsbn());
@@ -126,7 +126,7 @@ public class LoanServiceTest {
         Book book = bookService.createBook("1234567890123", "Harry Potter and the Philosopher's Stone",
                 LocalDate.of(1997, 6, 26), 1, "Fantasy");
         Member member = memberService.createMember("Cristian", "ccidbe@library.com", LocalDate.of(2000, 1, 6),
-                "Test Avenue nº20, Barcelona", 123456789);
+                "Test Avenue nº20, Barcelona", "123456789");
         Loan loan = loanService.createLoan(member.getId(), book.getIsbn());
         loanService.returnBook(book.getIsbn());
 
@@ -150,7 +150,7 @@ public class LoanServiceTest {
         Book book3 = bookService.createBook("0000000000003", "Harry Potter and the Prisoner of Azkaban",
                 LocalDate.of(1999, 7, 8), 1, "Fantasy");
         Member member = memberService.createMember("Cristian", "ccidbe@library.com", LocalDate.of(2000, 1, 6),
-                "Test Avenue nº20, Barcelona", 123456789);
+                "Test Avenue nº20, Barcelona", "123456789");
         Loan loan1 = loanService.createLoan(member.getId(), book1.getIsbn());
         Loan loan2 = loanService.createLoan(member.getId(), book2.getIsbn());
         Loan loan3 = loanService.createLoan(member.getId(), book3.getIsbn());
@@ -165,7 +165,7 @@ public class LoanServiceTest {
     void givenExistingMemberWithNoLoans_WhenGetByMemberId_thenEmptyListReturned() {
 
         Member member = memberService.createMember("Cristian", "ccidbe@library.com", LocalDate.of(2000, 1, 6),
-                "Test Avenue nº20, Barcelona", 123456789);
+                "Test Avenue nº20, Barcelona", "123456789");
 
         List<Loan> expected = new ArrayList<>();
         List<Loan> result = loanService.getByMemberId(member.getId());
@@ -188,7 +188,7 @@ public class LoanServiceTest {
         Book book3 = bookService.createBook("0000000000003", "Harry Potter and the Prisoner of Azkaban",
                 LocalDate.of(1999, 7, 8), 1, "Fantasy");
         Member member = memberService.createMember("Cristian", "ccidbe@library.com", LocalDate.of(2000, 1, 6),
-                "Test Avenue nº20, Barcelona", 123456789);
+                "Test Avenue nº20, Barcelona", "123456789");
         Loan loan1 = loanService.createLoan(member.getId(), book1.getIsbn());
         Loan loan2 = loanService.createLoan(member.getId(), book2.getIsbn());
         Loan loan3 = loanService.createLoan(member.getId(), book3.getIsbn());
@@ -207,7 +207,7 @@ public class LoanServiceTest {
                 LocalDate.of(1997, 6, 26), 1, "Fantasy");
 
         Member member = memberService.createMember("Cristian", "ccidbe@library.com", LocalDate.of(2000, 1, 6),
-                "Test Avenue nº20, Barcelona", 123456789);
+                "Test Avenue nº20, Barcelona", "123456789");
         loanService.createLoan(member.getId(), book.getIsbn());
         loanService.returnBook(book.getIsbn());
 
@@ -227,9 +227,9 @@ public class LoanServiceTest {
                 LocalDate.of(1997, 6, 26), 1, "Fantasy");
 
         Member member1 = memberService.createMember("Cristian", "ccidbe@library.com", LocalDate.of(2000, 1, 6),
-                "Test Avenue nº20, Barcelona", 123456789);
+                "Test Avenue nº20, Barcelona", "123456789");
         Member member2 = memberService.createMember("David", "david@library.com", LocalDate.of(1990, 6, 23),
-                "Test Avenue nº3, Sydney", 987654321);
+                "Test Avenue nº3, Sydney", "987654321");
         Loan loan1 = loanService.createLoan(member1.getId(), book.getIsbn());
         loanService.returnBook(book.getIsbn());
         Loan loan2 = loanService.createLoan(member2.getId(),book.getIsbn());
@@ -263,7 +263,7 @@ public class LoanServiceTest {
                 LocalDate.of(1997, 6, 26), 1, "Fantasy");
 
         Member member = memberService.createMember("Cristian", "ccidbe@library.com", LocalDate.of(2000, 1, 6),
-                "Test Avenue nº20, Barcelona", 123456789);
+                "Test Avenue nº20, Barcelona", "123456789");
 
         Loan expected = loanService.createLoan(member.getId(), book.getIsbn());
         Loan result = loanService.getActiveLoanByBookIsbn(book.getIsbn());

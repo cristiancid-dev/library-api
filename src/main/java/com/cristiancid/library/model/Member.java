@@ -11,9 +11,9 @@ public class Member {
     private String email;
     private LocalDate birthDate;
     private String address;
-    private int phoneNumber;
+    private String phoneNumber;
 
-    public Member(int id, String name, String email, LocalDate birthDate, String address, int phoneNumber) {
+    public Member(int id, String name, String email, LocalDate birthDate, String address, String phoneNumber) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -44,7 +44,7 @@ public class Member {
         return address;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
@@ -106,8 +106,8 @@ public class Member {
         this.address = address;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
-        if (phoneNumber < 4 || phoneNumber > 15) {
+    public void setPhoneNumber(String phoneNumber) {
+        if (phoneNumber.length() < 4 || phoneNumber.length() > 15) {
             throw new IllegalArgumentException("phone number length must be between 4 and 15 digits");
         }
     }

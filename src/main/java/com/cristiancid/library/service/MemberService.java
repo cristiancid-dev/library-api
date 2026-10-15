@@ -17,7 +17,7 @@ public class MemberService {
         this.memberRepository = memberRepository;
     }
 
-    public Member createMember(String name, String email, LocalDate birthDate, String address, int phoneNumber) {
+    public Member createMember(String name, String email, LocalDate birthDate, String address, String phoneNumber) {
         if (memberRepository.findByEmail(email).isPresent()) {
             throw new MemberAlreadyExistsException("Member with email '" + email + "' already exists");
         }
@@ -43,12 +43,12 @@ public class MemberService {
                 .orElseThrow(() -> new MemberNotFoundException("Member with email '" + email + "' not found"));
     }
 
-    public Member getMemberByPhoneNumber(int phoneNumber) {
+    public Member getMemberByPhoneNumber(String phoneNumber) {
         return memberRepository.findByPhoneNumber(phoneNumber)
                 .orElseThrow(() -> new MemberNotFoundException("Member with phone number '" + phoneNumber + "' not found"));
     }
 
-    public Member updateMember(int id, String name, String email, LocalDate birthDate, String address, int phoneNumber) {
+    public Member updateMember(int id, String name, String email, LocalDate birthDate, String address, String phoneNumber) {
         memberRepository.findById(id)
                 .orElseThrow(() -> new MemberNotFoundException("Member with id '" + id + "' not found"));
 

@@ -21,9 +21,9 @@ public class MemberServiceTest {
     void givenCorrectParams_whenCreateMember_thenMemberCreated() {
 
         Member expected = new Member(1, "Cristian", "ccidbe@library.com", LocalDate.of(2000,1,6),
-                "Test Street nº20, Barcelona", 123456789 );
+                "Test Street nº20, Barcelona", "123456789" );
         Member result = memberService.createMember("Cristian", "ccidbe@library.com", LocalDate.of(2000,1,6),
-                "Test Street nº20, Barcelona", 123456789);
+                "Test Street nº20, Barcelona", "123456789");
 
         assertEquals(expected.getId(), result.getId());
         assertEquals(expected.getName(), result.getName());
@@ -37,9 +37,9 @@ public class MemberServiceTest {
     void givenTwoMembers_whenCreateMember_thenIdIncrements() {
 
         Member member1 = memberService.createMember("Cristian", "ccidbe@library.com", LocalDate.of(2000,1,6),
-                "Test Street nº20, Barcelona", 123456789);
+                "Test Street nº20, Barcelona", "123456789");
         Member member2 = memberService.createMember("David", "david@library.com", LocalDate.of(1990, 6, 23),
-                "Test Avenue nº3, Sydney", 987654321);
+                "Test Avenue nº3, Sydney", "987654321");
 
         assertEquals(1, member1.getId());
         assertEquals(2, member2.getId());
@@ -51,18 +51,18 @@ public class MemberServiceTest {
         String email = "ccidbe@library.com";
 
         memberService.createMember("Cristian", email, LocalDate.of(2000,1,6),
-                "Test Street nº20, Barcelona", 123456789);
+                "Test Street nº20, Barcelona", "123456789");
 
         assertThrows(MemberAlreadyExistsException.class, () -> {
             memberService.createMember("David", email, LocalDate.of(1990, 6, 23),
-                    "Test Avenue nº3, Sydney", 987654321);
+                    "Test Avenue nº3, Sydney", "987654321");
         });
     }
 
     @Test
     void givenExistingPhoneNumber_whenCreateMember_thenMemberAlreadyExistsExceptionThrown() {
 
-        int phoneNumber = 123456789;
+        String phoneNumber = "123456789";
 
         memberService.createMember("Cristian", "ccidbe@library.com", LocalDate.of(2000,1,6),
                 "Test Street nº20, Barcelona", phoneNumber);
@@ -79,7 +79,7 @@ public class MemberServiceTest {
     void givenExistingMember_whenGetMemberById_thenMemberReturned() {
 
         Member expected = memberService.createMember("Cristian", "ccidbe@library.com", LocalDate.of(2000,1,6),
-                "Test Street nº20, Barcelona", 123456789);
+                "Test Street nº20, Barcelona", "123456789");
 
         Member result = memberService.getMemberById(expected.getId());
 
@@ -106,7 +106,7 @@ public class MemberServiceTest {
 
         String email = "ccidbe@library.com";
         Member expected = memberService.createMember("Cristian", email, LocalDate.of(2000,1,6),
-                "Test Street nº20, Barcelona", 123456789);
+                "Test Street nº20, Barcelona", "123456789");
         Member result = memberService.getMemberByEmail(email);
 
         assertEquals(expected.getId(), result.getId());
@@ -130,7 +130,7 @@ public class MemberServiceTest {
     @Test
     void givenExistingMember_whenGetMemberByPhoneNumber_thenMemberReturned() {
 
-        int phoneNumber = 123456789;
+        String phoneNumber = "123456789";
         Member expected = memberService.createMember("Cristian", "ccidbe@library.com", LocalDate.of(2000,1,6),
                 "Test Street nº20, Barcelona", phoneNumber);
         Member result = memberService.getMemberByPhoneNumber(phoneNumber);
@@ -147,7 +147,7 @@ public class MemberServiceTest {
     void givenNonExistingMember_whenGetMemberByPhoneNumber_thenMemberNotFoundExceptionThrown() {
 
         assertThrows(MemberNotFoundException.class, () -> {
-            memberService.getMemberByPhoneNumber(123456789);
+            memberService.getMemberByPhoneNumber("123456789");
         });
     }
 
@@ -157,12 +157,12 @@ public class MemberServiceTest {
     void givenExistingMemberAndCorrectParams_whenUpdateMember_thenMemberUpdated() {
 
         memberService.createMember("Cristian", "ccidbe@library.com", LocalDate.of(2000,1,6),
-                "Test Street nº20, Barcelona", 123456789);
+                "Test Street nº20, Barcelona", "123456789");
 
         Member expected = new Member(1, "David", "david@library.com", LocalDate.of(1990, 6, 23),
-                "Test Avenue nº3, Sydney", 987654321);
+                "Test Avenue nº3, Sydney", "987654321");
         Member result = memberService.updateMember(1, "David", "david@library.com", LocalDate.of(1990, 6, 23),
-                "Test Avenue nº3, Sydney", 987654321);
+                "Test Avenue nº3, Sydney", "987654321");
 
         assertEquals(expected.getId(), result.getId());
         assertEquals(expected.getName(), result.getName());
@@ -177,7 +177,7 @@ public class MemberServiceTest {
 
         assertThrows(MemberNotFoundException.class, () -> {
             memberService.updateMember(1, "David", "david@library.com", LocalDate.of(1990, 6, 23),
-                    "Test Avenue nº3, Sydney", 987654321);
+                    "Test Avenue nº3, Sydney", "987654321");
         });
     }
 
@@ -186,13 +186,13 @@ public class MemberServiceTest {
 
         String email = "david@library.com";
         memberService.createMember("Cristian", "ccidbe@library.com", LocalDate.of(2000,1,6),
-                "Test Street nº20, Barcelona", 123456789);
+                "Test Street nº20, Barcelona", "123456789");
         memberService.createMember("David", email, LocalDate.of(2002, 4, 21),
-                "Test Street nº67, Madrid", 321456987);
+                "Test Street nº67, Madrid", "321456987");
 
         assertThrows(MemberAlreadyExistsException.class, () -> {
             memberService.updateMember(1, "David", email, LocalDate.of(1990, 6, 23),
-                    "Test Avenue nº3, Sydney", 987654321);
+                    "Test Avenue nº3, Sydney", "987654321");
         });
 
     }
@@ -200,9 +200,9 @@ public class MemberServiceTest {
     @Test
     void givenExistingPhoneNumber_whenUpdateMember_thenMemberAlreadyExistsExceptionThrown() {
 
-        int phoneNumber = 987654321;
+        String phoneNumber = "987654321";
         memberService.createMember("Cristian", "ccidbe@library.com", LocalDate.of(2000,1,6),
-                "Test Street nº20, Barcelona", 123456789);
+                "Test Street nº20, Barcelona", "123456789");
         memberService.createMember("David", "david@library.com", LocalDate.of(2002, 4, 21),
                 "Test Street nº67, Madrid", phoneNumber);
 
@@ -217,12 +217,12 @@ public class MemberServiceTest {
 
         String email = "ccidbe@library.com";
         memberService.createMember("Cristian", email, LocalDate.of(2000,1,6),
-                "Test Street nº20, Barcelona", 123456789);
+                "Test Street nº20, Barcelona", "123456789");
 
         Member expected = new Member(1, "David", email, LocalDate.of(1990, 6, 23),
-                "Test Avenue nº3, Sydney", 987654321);
+                "Test Avenue nº3, Sydney", "987654321");
         Member result = memberService.updateMember(1, "David", email, LocalDate.of(1990, 6, 23),
-                "Test Avenue nº3, Sydney", 987654321);
+                "Test Avenue nº3, Sydney", "987654321");
 
         assertEquals(expected.getId(), result.getId());
         assertEquals(expected.getName(), result.getName());
@@ -235,7 +235,7 @@ public class MemberServiceTest {
     @Test
     void givenSamePhoneNumber_whenUpdateMember_thenMemberUpdated() {
 
-        int phoneNumber = 123456789;
+        String phoneNumber = "123456789";
         memberService.createMember("Cristian", "ccidbe@library.com", LocalDate.of(2000,1,6),
                 "Test Street nº20, Barcelona", phoneNumber);
 
@@ -258,7 +258,7 @@ public class MemberServiceTest {
     void givenExistingMember_whenDeleteMember_thenMemberDeleted() {
 
         memberService.createMember("Cristian", "ccidbe@library.com", LocalDate.of(2000,1,6),
-                "Test Street nº20, Barcelona", 123456789);
+                "Test Street nº20, Barcelona", "123456789");
 
         assertDoesNotThrow(() -> {
             memberService.deleteMember(1);

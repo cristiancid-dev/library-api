@@ -19,7 +19,7 @@ public class LibrarianServiceTest {
     void givenCorrectParams_whenCreateLibrarian_thenLibrarianCreated() {
 
         Librarian expected = new Librarian(1, "Cristian", "12345678", "ccidbe@library.com");
-        Librarian result = librarianService.createLibrarian("Cristian", "12345678", "ccidbe@gmail.com");
+        Librarian result = librarianService.createLibrarian("Cristian", "12345678", "ccidbe@library.com");
 
         assertEquals(expected.getId(), result.getId());
         assertEquals(expected.getName(), result.getName());
